@@ -16,12 +16,14 @@ cd "${OUTDIR}"
 
 echo "GTF URL: ${GTF_URL}"
 echo "Downloading GTF..."
+echo "${GTF_URL}"
 wget -q --show-progress -c -N "${GTF_URL}"
 
 echo "Downloading chromosomes..."
 chroms=($(seq 1 22) X Y)
 for c in "${chroms[@]}"; do
   url="${DNA_BASE}/Homo_sapiens.${ASSEMBLY}.dna.chromosome.${c}.fa.gz"
+  echo "${url}"
   wget -q --show-progress -c -N "${url}"
 done
 
